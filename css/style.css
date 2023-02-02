@@ -17,7 +17,21 @@ body{
     color: darkslateblue;
     font-weight: 600;
 }
+.text-regular-color{
+    color: #949494;
+}
 /* news found */
 .news-found-back{
     background-color: white;
+}
+/* news feed card */
+.authorPicSize{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.text-ellipsis{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }

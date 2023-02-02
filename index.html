@@ -19,32 +19,8 @@
     <!-- header -->
     <header>
         <!-- nav bar section -->
-        <section>
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                <div class="container">
-                    <a class="navbar-brand" href="#"><span class="daily-back-color p-2 rounded-4">Daily</span> News</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link navLink" aria-current="page" href="#">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link navLink" href="#">Blog</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="navbar-brand" href="#">
-                                    <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="User" width="30"
-                                        height="24">
-                                </a>
-                            </li>
-                    </div>
-                </div>
-            </nav>
+        <section id="navbarId">
+
         </section>
         <hr class="w-75 mx-auto">
         <!-- new Category sections -->
@@ -54,13 +30,52 @@
             </div>
         </section>
         <!-- news founded -->
-        <section class="mt-3">
-            <div class="container p-2 rounded-3 news-found-back"><span></span> items found for category <span></span></div>
+        <section class="my-3">
+            <div class="container p-2 rounded-3 news-found-back">
+                <span></span> items found for category <span></span>
+            </div>
         </section>
     </header>
     <!-- main -->
     <main>
-
+        <!-- news feed -->
+        <section class="container mx-auto">
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-4 container">
+                        <img src="..." class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text text-ellipsis text-regular-color">This is a wider card with supporting text below as a natural lead-in to
+                                additional content. This content is a little bit longer.</p>
+                            <p class="card-text">
+                            <div class="d-flex justify-content-between align-items-center flex-wrap">
+                                <div class="d-flex
+                                align-items-center">
+                                    <div class="authorPicSize">
+                                        <img class="img-fluid" src="..." alt="...">
+                                    </div>
+                                    <div>
+                                        <p>author name</p>
+                                        <p class="text-regular-color">date:</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <i class="fa-regular fa-eye"></i>
+                                    <span> 1.5</span>
+                                </div>
+                                <div>
+                                    <button class="btn btn-outline-secondary">Show more <i class="fa-solid fa-arrow-right"></i></button>
+                                </div>
+                            </div>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
     <!-- footer -->
     <footer>
