@@ -16,12 +16,6 @@ document.getElementById('navbarId').innerHTML = `
                     <li class="nav-item">
                         <a class="nav-link navLink" href="#">Blog</a>
                     </li>
-                    <li class="nav-item">
-                        <a id="userPic" class="navbar-brand" href="#">
-                            <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="User" width="30"
-                                height="24">
-                        </a>
-                    </li>
             </div>
         </div>
     </nav>
