@@ -17,7 +17,7 @@ document.getElementById('navbarId').innerHTML = `
                         <a class="nav-link navLink" href="#">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="navbar-brand" href="#">
+                        <a id="userPic" class="navbar-brand" href="#">
                             <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="User" width="30"
                                 height="24">
                         </a>
@@ -37,11 +37,12 @@ const loadCategory = async () => {
 const displayCategory = newsCategories => {
     // console.log(newsCategories);
     // news category section
+    // dinamicly home add
     const categoryContainer = document.getElementById('news-category');
 
     const homeDiv = document.createElement('div');
     homeDiv.innerHTML = `
-    <h5 class="m-2 hoverToColor" role="button" tabindex="0">Home</h5>
+    <h5 onclick="loadNews(02)" class="m-2 hoverToColor" role="button" tabindex="0">Home</h5>
     `;
     categoryContainer.appendChild(homeDiv);
 
@@ -52,6 +53,7 @@ const displayCategory = newsCategories => {
         `;
         categoryContainer.appendChild(div);
     });
+    loadNews(02);
 };
 
 // loading news data
@@ -64,19 +66,22 @@ const loadNews = async categoryID => {
 };
 // displaing news cards
 const displayNewsInCard = newsDatas => {
-    console.log(newsDatas);
+    // console.log(newsDatas);
+    // news Found
     const newsFound = document.getElementById('newsFound');
+    // found news section clear
     newsFound.innerHTML = '';
     newsFound.innerHTML = `
-        <span>${newsDatas.length} items is found for category</span>
+        <span>${newsDatas.length} items is found</span>
     `;
+    // news card section
     const newsCardDiv = document.getElementById('newsCard');
     newsCardDiv.innerHTML = '';
 
     newsDatas.forEach(newsdata => {
         const div = document.createElement('div');
         div.classList.add('card', 'mb-3');
-        div.innerHTML =`
+        div.innerHTML = `
             <div class="row g-0">
                 <div class="col-4 p-2 d-sm-flex">
                     <img src="${newsdata.image_url ? newsdata.image_url : 'no-image found'}" class="img-fluid rounded-3">
@@ -84,8 +89,8 @@ const displayNewsInCard = newsDatas => {
                 <div class="col-8">
                     <div class="card-body">
                         <h5 class="card-title fw-bolder">${newsdata.title}</h5>
-                        <p class="text-regular-color">${newsdata.details.slice(0,33)}</p>
-                        <p class="card-text text-ellipsis text-regular-color">${newsdata.details.slice(33,200)}</p>
+                        <p class="text-regular-color">${newsdata.details.slice(0, 33)}</p>
+                        <p class="card-text text-ellipsis text-regular-color">${newsdata.details.slice(33, 200)}</p>
                         <p class="card-text">
                             <div class="d-flex justify-content-between align-items-center flex-wrap">
                                 <div class="d-flex
@@ -94,7 +99,7 @@ const displayNewsInCard = newsDatas => {
                                         <img class="img-fluid" src="${newsdata.author.img}">
                                     </div>
                                     <div>
-                                        <p>${newsdata.author.name ? newsdata.author.name:'no name founded'}</p>
+                                        <p>${newsdata.author.name ? newsdata.author.name : 'no name founded'}</p>
                                         <p class="text-regular-color">${newsdata.author.published_date}</p>
                                     </div>
                                 </div>
@@ -103,7 +108,7 @@ const displayNewsInCard = newsDatas => {
                                     <span> ${newsdata.total_view ? newsdata.total_view : 'Not Sure'}</span>
                                 </div>
                                 <div>
-                                    <button class="btn btn-outline-secondary">Show more <i
+                                    <button onclick="loadNewsDataById('${newsdata._id}')" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#newsDetails">Show more <i
                                         class="fa-solid fa-arrow-right"></i></button>
                                 </div>
                             </div>
@@ -114,5 +119,28 @@ const displayNewsInCard = newsDatas => {
         `;
         newsCardDiv.appendChild(div);
     })
+};
+
+// display modal
+const loadNewsDataById = async newsId => {
+    const url = `https://openapi.programming-hero.com/api/news/${newsId}`;
+
+    const res = await fetch(url);
+    const data = await res.json();
+    displayNewsdata(data.data[0]);
+};
+
+const displayNewsdata = news => {
+    // console.log(news);
+    document.getElementById('newsDetailsLabel').innerText = `${news.title}`;
+
+    document.getElementById('newsDetailsInModal').innerHTML = `
+     <div class="mb-4">
+        <img src="${news.thumbnail_url}" class="d-flex mx-auto" height="170px" width="150">
+    </div>
+    <div>
+        <h6>${news.details}</h6>
+    </div>
+    `;
 }
 loadCategory();
