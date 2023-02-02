@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+/* utilities */
+body{
+    background-color: #F6F6F7;
+    font-family: 'Poppins', sans-serif;
+}
+.hoverToColor:hover{
+    color: darkslateblue;
+    font-weight: 600;
+}
+/* heaer style */
+.daily-back-color{
+    color: white;
+    background-color: darkslateblue;
+}
+.navLink:hover{
+    color: darkslateblue;
+    font-weight: 600;
+}
+/* news found */
+.news-found-back{
+    background-color: white;
+}
