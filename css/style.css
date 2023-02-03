@@ -30,6 +30,9 @@ body{
     background-color: white;
 }
 /* main style */
+.mainSection{
+    height: 123vw;
+}
 /* news feed card */
 .authorPicSize{
     width: 40px;

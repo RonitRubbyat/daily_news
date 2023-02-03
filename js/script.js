@@ -77,6 +77,8 @@ const displayNewsInCard = newsDatas => {
     newsFound.innerHTML = `
         <span>${newsDatas.length} items is found</span>
     `;
+    // footer style add depend on founded news
+    footerStyleAdd();
     // news card section
     const newsCardDiv = document.getElementById('newsCard');
     newsCardDiv.innerHTML = '';
@@ -154,6 +156,18 @@ const displayNewsdata = news => {
 const spinner = isStart => {
     const spinnerSec = document.getElementById('spinner');
     isStart ? spinnerSec.classList.remove('d-none') : spinnerSec.classList.add('d-none');
+};
+
+// footer style added
+const footerStyleAdd = () => {
+    const newsFounded = document.getElementById('newsFound');
+    console.log(typeof newsFounded.innerText[0]);
+    const mainSection = document.getElementById('mainContainer');
+    if(newsFounded.innerText[0] === '0'){
+        mainSection.classList.add('mainSection');
+    }else{
+        mainSection.classList.remove('mainSection');
+    }
 };
 
 // load categogry
