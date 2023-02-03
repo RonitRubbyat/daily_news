@@ -11,7 +11,7 @@ document.getElementById('navbarId').innerHTML = `
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link navLink" aria-current="page" href="#">Home</a>
+                        <a onclick="loadCategory()" class="nav-link navLink" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link navLink" href="#">Blog</a>
@@ -22,6 +22,9 @@ document.getElementById('navbarId').innerHTML = `
 `;
 // category filde
 const loadCategory = async () => {
+    // spinner start
+    spinner(true);
+
     const url = `https://openapi.programming-hero.com/api/news/categories`;
     const res = await fetch(url);
     const data = await res.json();
@@ -33,10 +36,11 @@ const displayCategory = newsCategories => {
     // news category section
     // dinamicly home add
     const categoryContainer = document.getElementById('news-category');
+    categoryContainer.innerText = '';
 
     const homeDiv = document.createElement('div');
     homeDiv.innerHTML = `
-    <h5 onclick="loadNews(02)" class="m-2 hoverToColor" role="button" tabindex="0">Home</h5>
+    <h5 onclick="loadCategory()" class="m-2 hoverToColor" role="button" tabindex="0">Home</h5>
     `;
     categoryContainer.appendChild(homeDiv);
 
@@ -47,11 +51,16 @@ const displayCategory = newsCategories => {
         `;
         categoryContainer.appendChild(div);
     });
-    loadNews(02);
+    // randomly load news in landing page and display it
+    const randomNewsCategory = Math.round((Math.random() * 7) + 1);
+    loadNews(randomNewsCategory);
 };
 
 // loading news data
 const loadNews = async categoryID => {
+    // spinner start
+    spinner(true);
+
     const url = `https://openapi.programming-hero.com/api/news/category/0${categoryID}`;
 
     const res = await fetch(url);
@@ -82,19 +91,19 @@ const displayNewsInCard = newsDatas => {
                 </div>
                 <div class="col-8">
                     <div class="card-body">
-                        <h5 class="card-title fw-bolder">${newsdata.title}</h5>
-                        <p class="text-regular-color">${newsdata.details.slice(0, 33)}</p>
-                        <p class="card-text text-ellipsis text-regular-color">${newsdata.details.slice(33, 200)}</p>
+                        <h5 class="card-title fw-bolder">${newsdata.title ? newsdata.title : 'not founded'}</h5>
+                        <p class="text-regular-color">${newsdata.details ? newsdata.details.slice(0, 33) : 'not founded'}</p>
+                        <p class="card-text text-ellipsis text-regular-color">${newsdata.details ? newsdata.details.slice(33, 200) : 'not founded'}</p>
                         <p class="card-text">
                             <div class="d-flex justify-content-between align-items-center flex-wrap">
                                 <div class="d-flex
                                 align-items-center">
                                     <div class="authorPicSize me-2">
-                                        <img class="img-fluid" src="${newsdata.author.img}">
+                                        <img class="img-fluid" src="${newsdata.author.img ? newsdata.author.img : 'no image found'}">
                                     </div>
                                     <div>
                                         <p>${newsdata.author.name ? newsdata.author.name : 'no name founded'}</p>
-                                        <p class="text-regular-color">${newsdata.author.published_date}</p>
+                                        <p class="text-regular-color">${newsdata.author.published_date ? newsdata.author.published_date.slice(0, 11) : 'no date founded'}</p>
                                     </div>
                                 </div>
                                 <div>
@@ -113,6 +122,9 @@ const displayNewsInCard = newsDatas => {
         `;
         newsCardDiv.appendChild(div);
     })
+
+    // spinner end
+    spinner(false);
 };
 
 // display modal
@@ -136,5 +148,13 @@ const displayNewsdata = news => {
         <h6>${news.details}</h6>
     </div>
     `;
-}
+};
+
+// spinner
+const spinner = isStart => {
+    const spinnerSec = document.getElementById('spinner');
+    isStart ? spinnerSec.classList.remove('d-none') : spinnerSec.classList.add('d-none');
+};
+
+// load categogry
 loadCategory();

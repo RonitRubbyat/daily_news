@@ -1,6 +1,11 @@
+/* roboto */
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+/* playfair display */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap');
 /* utilities */
 body{
+    margin: 0;
+    padding: 0;
     background-color: #F6F6F7;
     font-family: 'Poppins', sans-serif;
 }
@@ -24,6 +29,7 @@ body{
 .news-found-back{
     background-color: white;
 }
+/* main style */
 /* news feed card */
 .authorPicSize{
     width: 40px;
@@ -35,4 +41,12 @@ body{
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+/* footer style */
+footer{
+    font-family: 'Playfair Display', serif;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    height: 10vw;
 }
