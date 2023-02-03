@@ -114,7 +114,7 @@ const displayNewsInCard = newsDatas => {
                                 </div>
                                 <div>
                                     <button onclick="loadNewsDataById('${newsdata._id}')" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#newsDetails">Show more <i
-                                        class="fa-solid fa-arrow-right"></i></button>
+                                        class="fa-solid fa-arrow-right arrowAnimation"></i></button>
                                 </div>
                             </div>
                         </p>

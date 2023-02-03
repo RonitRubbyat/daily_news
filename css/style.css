@@ -45,6 +45,9 @@ body{
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+.arrowAnimation{
+    animation: arrow infinite 1s ease alternate;
+}
 /* footer style */
 footer{
     font-family: 'Playfair Display', serif;
@@ -52,4 +55,14 @@ footer{
     margin: 0;
     padding: 0;
     height: 10vw;
+}
+
+/* Animation */
+@keyframes arrow {
+    0%{
+        color: #949494;
+    }
+    100%{
+        color: white;
+    }
 }
