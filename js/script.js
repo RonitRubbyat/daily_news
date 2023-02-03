@@ -14,7 +14,7 @@ document.getElementById('navbarId').innerHTML = `
                         <a onclick="loadCategory()" class="nav-link navLink" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link navLink" href="#">Blog</a>
+                        <a onclick="displayBlog()" class="nav-link navLink" href="#">Blog</a>
                     </li>
             </div>
         </div>
@@ -152,6 +152,54 @@ const displayNewsdata = news => {
     `;
 };
 
+// displayBlog
+const displayBlog = () => {
+    // found news section clear
+    newsFound.innerHTML = '';
+    newsFound.innerHTML = `
+        <span>3 items is found</span>
+    `;
+    // news card section
+    const newsCardDiv = document.getElementById('newsCard');
+    newsCardDiv.innerHTML = '';
+    // blog Card
+    newsCardDiv.innerHTML =`
+        <div class="card mb-3"">
+            <div class="row g-0">
+                <div class="col-md-12">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">var VS let & const</h5>
+                        <p class="card-text"><h6>var:</h6> It's a variable diclaring mathod useed before ES6.</p>
+                        <p class="card-text"><h6>let:</h6> It's a method of diclaring variable. It's a ES6 component.</p>
+                        <p class="card-text"><h6>const:</h6> To diclaring any constent in script we use const in  ES6.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-12">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Arrow function VS Function</h5>
+                        <p class="card-text"><h6>Arrow function:</h6> the function which diclared as, ()=>{}; is called arrow function. ES6 intruduse us with this. in this function .this will show you the whole window.</p>
+                        <p class="card-text"><h6>Regular function:</h6> It usually used before ES6. It won't show the whole window in .this.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-12">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Templet String</h5>
+                        <p class="card-text">Carrates are the sign that called templet string. We use it to send dynamic data through string.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+};
+
 // spinner
 const spinner = isStart => {
     const spinnerSec = document.getElementById('spinner');
@@ -160,12 +208,11 @@ const spinner = isStart => {
 
 // footer style added
 const footerStyleAdd = () => {
-    const newsFounded = document.getElementById('newsFound');
-    console.log(typeof newsFounded.innerText[0]);
+    const newsFounded = document.getElementById('newsFound');;
     const mainSection = document.getElementById('mainContainer');
-    if(newsFounded.innerText[0] === '0'){
+    if (newsFounded.innerText[0] === '0') {
         mainSection.classList.add('mainSection');
-    }else{
+    } else {
         mainSection.classList.remove('mainSection');
     }
 };
