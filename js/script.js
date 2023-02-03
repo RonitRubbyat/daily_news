@@ -86,12 +86,13 @@ const displayNewsInCard = newsDatas => {
     newsDatas.forEach(newsdata => {
         const div = document.createElement('div');
         div.classList.add('card', 'mb-3');
+        div.style.maxWidth='1260px'
         div.innerHTML = `
             <div class="row g-0">
-                <div class="col-4 p-2 d-sm-flex">
+                <div class="col-md-4 p-2 d-sm-flex">
                     <img src="${newsdata.image_url ? newsdata.image_url : 'no-image found'}" class="img-fluid rounded-3">
                 </div>
-                <div class="col-8">
+                <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title fw-bolder">${newsdata.title ? newsdata.title : 'not founded'}</h5>
                         <p class="text-regular-color">${newsdata.details ? newsdata.details.slice(0, 33) : 'not founded'}</p>
@@ -164,7 +165,7 @@ const displayBlog = () => {
     newsCardDiv.innerHTML = '';
     // blog Card
     newsCardDiv.innerHTML =`
-        <div class="card mb-3"">
+        <div class="card mb-3" style="max-width: 1260px;">
             <div class="row g-0">
                 <div class="col-md-12">
                     <div class="card-body">
@@ -176,7 +177,7 @@ const displayBlog = () => {
                 </div>
             </div>
         </div>
-        <div class="card mb-3">
+        <div class="card mb-3" style="max-width: 1260px;">
             <div class="row g-0">
                 <div class="col-md-12">
                     <div class="card-body">
@@ -187,7 +188,7 @@ const displayBlog = () => {
                 </div>
             </div>
         </div>
-        <div class="card mb-3">
+        <div class="card mb-3" style="max-width: 1260px;">
             <div class="row g-0">
                 <div class="col-md-12">
                     <div class="card-body">
